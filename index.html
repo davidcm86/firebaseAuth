@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi login fiable</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDy6WdI9PxoDkyhMq6ScnxB2bjlQQW3bFE",
+    authDomain: "prueba-fiabilidad.firebaseapp.com",
+    databaseURL: "https://prueba-fiabilidad.firebaseio.com",
+    storageBucket: "",
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="js/login-firebase.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalLogin">
+    Entra en la web!
+  </button>
+
+  <table class="table" style="display:none;">
+  <thead>
+    <tr>
+      <th>Red</th>
+      <th>Imagen</th>
+      <th>Email</th>
+      <th>Nickname</th>
+      <th>Fecha nacimiento</th>
+      <th>Fecha login</th>
+    </tr>
+  </thead>
+  <tbody id="body-tabla-login">
+  </tbody>
+  </table>
+  <!-- Modal -->
+  <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Entra con tu email y contraseña o con cualquier red social</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 verticalLine">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default" onclick="loginEmailPassword()">Entrar</button>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-4"><img src="img/facebook-login.png" alt="facebook login" title="facebook login" class="img-responsive img-circle" id="login-facebook" style="cursor:pointer;"></div>
+              <div class="col-md-4"><img src="img/twitter-login.png" alt="twitter login" title="twitter login" class="img-responsive img-circle" id="login-twitter" style="cursor:pointer;"></div>
+              <div class="col-md-4"><img src="img/google-login.png" alt="google login" title="google login" class="img-responsive img-circle" id="login-google" style="cursor:pointer;"></div>
+            </div>
+          </div>
+          <div id="error-success-login" class="alert alert-danger alert-dismissible fade in" role="alert" style="display:none;margin-top:10px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <p id="text-error-login-email"></p>
+          </div>
+          <hr size="10" />
+          <a id="mostrar-registro" href="#"><h4>Regístrate de forma sencilla!</h4></a>
+          <div class="row">
+            <div class="col-md-12" id="registro" style="display:none;">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" id="email-registro" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password-registro" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default" onclick="registroEmailPassword()">Registrarse</button>
+            </div>
+          </div>
+          <div id="error-success-registro" class="alert alert-danger alert-dismissible fade in" role="alert" style="display:none;margin-top:10px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <p id="text-error-registro"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
